@@ -3,89 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Six’0 | Digital Hub</title>
+    <title>Six’0 | Digital Creative</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="bg-lines"></div>
-    <div class="bg-gradient"></div>
+    <div class="glow-overlay"></div>
 
-    <div class="container">
-        <header class="hero">
-            <div class="avatar-container">
-                <img src="six0-char.png" alt="Six’0 Character" class="avatar" onerror="this.src='https://via.placeholder.com/150/222/fff?text=Six0'">
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sticky-side">
+                <div class="profile-container">
+                    <img src="six0-char.png" alt="Six’0" class="main-avatar" onerror="this.src='https://via.placeholder.com/300x300/111/fff?text=Six0'">
+                </div>
+                <h1 class="brand">Six’0</h1>
+                <p class="role">Creative // Tech // Music</p>
+                
+                <nav class="side-nav">
+                    <a href="#about">About</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#connect">Connect</a>
+                </nav>
+
+                <div class="social-strip">
+                    <a href="https://instagram.com/briangunar" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com/briangunar" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/briangunar" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
-            <h1 class="glitch-name">Six’0</h1>
-            <p class="tag">Digital Creative & Explorer</p>
-        </header>
+        </aside>
 
-        <section class="glass-box about">
-            <h2>The Identity</h2>
-            <p>Hey — I’m <strong>Six’0</strong>. I’m a digital creative driven by curiosity, self-expression, and the need to constantly evolve. I live at the intersection of technology, art, music, and online culture.</p>
-            <p>I don’t believe in static identities. I believe in growth, exploration, and being unapologetically real. This space is a reflection of that mindset.</p>
-        </section>
-
-        <section class="link-hub">
-            <h2 class="section-title">Navigation Hub</h2>
+        <main class="main-content">
             
-            <div class="links-grid">
-                <a href="https://www.instagram.com/briangunar" target="_blank" class="nav-card insta">
-                    <i class="fa-brands fa-instagram"></i>
-                    <div class="nav-text">
-                        <h3>Instagram</h3>
-                        <span>Photography & Aesthetic</span>
-                    </div>
-                </a>
+            <section id="about" class="section glass-card">
+                <span class="section-tag">Biography</span>
+                <h2>Who is Six’0?</h2>
+                <div class="bio-text">
+                    <p class="lead">I’m a digital creative driven by curiosity, self-expression, and the need to constantly evolve.</p>
+                    <p>I live at the intersection of technology, art, music, and online culture, turning ideas into experiences and connections across platforms.</p>
+                    <p>I don’t believe in static identities. I believe in growth, exploration, and being unapologetically real. This space is a reflection of that mindset.</p>
+                </div>
+                <div class="quote-box">
+                    "This isn’t just a website. It’s a snapshot of who I am right now — and an open door to what’s coming next."
+                </div>
+            </section>
 
-                <a href="https://twitter.com/briangunar" target="_blank" class="nav-card twitter">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <div class="nav-text">
-                        <h3>Twitter / X</h3>
-                        <span>Thoughts & Tech Updates</span>
-                    </div>
-                </a>
+            <section id="gallery" class="section">
+                <span class="section-tag">Moments</span>
+                <h2>Visual Storytelling</h2>
+                <div class="photo-grid">
+                    <div class="photo-item"><img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=500&auto=format&fit=crop" alt="Social Photo 1"></div>
+                    <div class="photo-item"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500&auto=format&fit=crop" alt="Social Photo 2"></div>
+                    <div class="photo-item"><img src="https://images.unsplash.com/photo-1614726365952-520392667b2d?q=80&w=500&auto=format&fit=crop" alt="Social Photo 3"></div>
+                    <div class="photo-item"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop" alt="Social Photo 4"></div>
+                </div>
+            </section>
 
-                <a href="https://discord.gg/yourlink" target="_blank" class="nav-card discord">
-                    <i class="fa-brands fa-discord"></i>
-                    <div class="nav-text">
-                        <h3>Discord</h3>
-                        <span>Community & Hangout</span>
-                    </div>
-                </a>
+            <section id="connect" class="section">
+                <span class="section-tag">The Hub</span>
+                <h2>Direct Channels</h2>
+                <div class="hub-grid">
+                    <a href="https://instagram.com/briangunar" target="_blank" class="hub-item">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://twitter.com/briangunar" target="_blank" class="hub-item">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>Twitter / X</span>
+                    </a>
+                    <a href="https://discord.gg/yourlink" target="_blank" class="hub-item">
+                        <i class="fa-brands fa-discord"></i>
+                        <span>Discord Community</span>
+                    </a>
+                    <a href="https://github.com/briangunar" target="_blank" class="hub-item">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </section>
 
-                <a href="https://github.com/briangunar" target="_blank" class="nav-card github">
-                    <i class="fa-brands fa-github"></i>
-                    <div class="nav-text">
-                        <h3>GitHub</h3>
-                        <span>Code & Experiments</span>
-                    </div>
-                </a>
-
-                <a href="https://spotify.com" target="_blank" class="nav-card spotify">
-                    <i class="fa-brands fa-spotify"></i>
-                    <div class="nav-text">
-                        <h3>Spotify</h3>
-                        <span>Current Mood & Playlists</span>
-                    </div>
-                </a>
-
-                <a href="mailto:your@email.com" class="nav-card email">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div class="nav-text">
-                        <h3>Contact</h3>
-                        <span>Let's collaborate</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <p>This isn't just a website. It's a snapshot of who I am right now.</p>
-            <div class="signature">— Six’0</div>
-        </footer>
+            <footer class="site-footer">
+                — Six’0 // 2026
+            </footer>
+        </main>
     </div>
 
 </body>
