@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BrianGunar | About Me</title>
+    <title>Six'0 | About Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -10,6 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;400;700&display=swap');
 
         :root {
+            --card-hover: rgba(0,255,225,0.08);
             --bg: #0a0a0f;
             --bg2: #12121a;
             --accent: #00ffe1;
@@ -146,6 +147,68 @@
             color: var(--accent2);
         }
 
+        /* ===== NETWORK GRID ===== */
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .network-card {
+            display: block;
+            text-decoration: none;
+            background: rgba(10,15,25,0.6);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .network-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent, rgba(0,255,225,0.15), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .network-card:hover::before {
+            opacity: 1;
+        }
+
+        .network-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0,255,225,0.25);
+            background: var(--card-hover);
+        }
+
+        .network-card.static:hover {
+            transform: translateY(-3px);
+        }
+
+        .network-name {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .network-desc {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .network-id {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--accent2);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -166,9 +229,9 @@
 <body>
 
     <div class="hero">
-        <div class="name">BrianGunar</div>
-        <div class="tagline">System Builder • Hacker‑Mindset Developer • AI Explorer</div>
-        <a href="https://linktr.ee/BrianGunar" class="button" target="_blank">Access Network</a>
+        <div class="name">Six'0</div>
+        <div class="tagline">Systems Architect • Experimentalist • Signal Entity</div>
+        <a href="https://linktr.ee/Six'0" class="button" target="_blank">Access Network</a>
     </div>
 
     <div class="section">
@@ -223,21 +286,48 @@
     <div class="section">
 
         <div class="card">
-            <div class="title">// network</div>
-            <div class="skills">
-                <a href="https://github.com" target="_blank" class="skill" style="text-decoration:none;">GitHub</a>
-                <a href="https://discord.gg" target="_blank" class="skill" style="text-decoration:none;">Discord</a>
-                <a href="https://instagram.com" target="_blank" class="skill" style="text-decoration:none;">Instagram</a>
-                <a href="https://open.spotify.com" target="_blank" class="skill" style="text-decoration:none;">Spotify</a>
-                <a href="https://steamcommunity.com" target="_blank" class="skill" style="text-decoration:none;">Steam</a>
-                <a href="https://linktr.ee/BrianGunar" target="_blank" class="skill" style="text-decoration:none; border-color: var(--accent); color: var(--accent);">Full Linktree</a>
+            <div class="title">// network :: external nodes</div>
+            <p style="margin-bottom:15px; color: var(--muted);">Verified external connections and public signal endpoints.</p>
+            <div class="network-grid">
+
+                <a href="https://github.com/Brancovic" target="_blank" class="network-card">
+                    <div class="network-name">GitHub</div>
+                    <div class="network-desc">Code repositories, system tools, and experimental builds</div>
+                </a>
+
+                <a href="https://steamcommunity.com/profiles/76561198118695173" target="_blank" class="network-card">
+                    <div class="network-name">Steam</div>
+                    <div class="network-desc">Simulation environments and digital worlds</div>
+                </a>
+
+                <a href="https://www.instagram.com/brix_tin/" target="_blank" class="network-card">
+                    <div class="network-name">Instagram</div>
+                    <div class="network-desc">Visual signal fragments and captured states</div>
+                </a>
+
+                <a href="https://open.spotify.com/user/akamentv?si=cb7ea8ef859f49da" target="_blank" class="network-card">
+                    <div class="network-name">Spotify</div>
+                    <div class="network-desc">Cognitive frequency stream and audio layer</div>
+                </a>
+
+                <a href="https://fetlife.com/Six0Four" target="_blank" class="network-card">
+                    <div class="network-name">FetLife</div>
+                    <div class="network-desc">Restricted-access identity partition</div>
+                </a>
+
+                <div class="network-card static">
+                    <div class="network-name">Discord</div>
+                    <div class="network-desc">Direct communication channel</div>
+                    <div class="network-id">ID: brianxd2011</div>
+                </div>
+
             </div>
         </div>
 
-    </div>
+    </div> </div>
 
     <footer>
-        signal_id: BrianGunar | status: online
+        signal_id: Six'0 | status: online
     </footer>
 
 </body>
