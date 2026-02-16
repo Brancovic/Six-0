@@ -1,321 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Six'0 | About Me</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Six'0 | Signal Entity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;400;700&display=swap');
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
 
-        :root {
-            --card-hover: rgba(0,255,225,0.08);
-            --bg: #0a0a0f;
-            --bg2: #12121a;
-            --accent: #00ffe1;
-            --accent2: #7a5cff;
-            --text: #e6f1ff;
-            --muted: #8892b0;
-            --card: rgba(20,20,30,0.6);
-            --border: rgba(0,255,225,0.2);
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
 
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background: radial-gradient(circle at 20% 20%, #141427, #050508);
-            color: var(--text);
-            overflow-x: hidden;
-        }
+:root{
+--accent:#00ffe1;
+--accent2:#7a5cff;
+--bg:#050508;
+--card:rgba(20,20,30,0.65);
+--text:#e6f1ff;
+--muted:#8892b0;
+--border:rgba(0,255,225,0.2);
+}
 
-        body::before {
-            content: "";
-            position: fixed;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg,
-            transparent,
-            rgba(0,255,225,0.03),
-            transparent,
-            rgba(122,92,255,0.03),
-            transparent);
-            animation: moveBg 20s linear infinite;
-            z-index: -1;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-        @keyframes moveBg {
-            0% { transform: translate(0,0); }
-            100% { transform: translate(-25%, -25%); }
-        }
+body{
+font-family:'JetBrains Mono',monospace;
+background:#050508;
+color:var(--text);
+overflow-x:hidden;
+}
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+/* Mouse glow */
+#cursorGlow{
+position:fixed;
+width:300px;
+height:300px;
+border-radius:50%;
+pointer-events:none;
+background:radial-gradient(circle,
+rgba(0,255,225,0.15),
+transparent 60%);
+z-index:0;
+transform:translate(-50%,-50%);
+}
 
-        .name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0,255,225,0.4);
-            animation: glow 3s ease-in-out infinite alternate;
-        }
+/* Boot screen */
+#boot{
+position:fixed;
+inset:0;
+background:black;
+color:var(--accent);
+font-family:'JetBrains Mono';
+padding:30px;
+z-index:9999;
+}
 
-        @keyframes glow {
-            from { text-shadow: 0 0 10px var(--accent); }
-            to { text-shadow: 0 0 30px var(--accent2); }
-        }
+.bootline{
+opacity:0;
+animation:bootfade 0.5s forwards;
+}
 
-        .tagline {
-            margin-top: 15px;
-            color: var(--muted);
-            font-size: 1.1rem;
-        }
+@keyframes bootfade{
+to{opacity:1;}
+}
 
-        .buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+z-index:1;
+}
 
-        .button {
-            padding: 12px 28px;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--accent);
-            transition: 0.3s;
-        }
+.name{
+font-family:'Orbitron';
+font-size:3rem;
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:glow 3s infinite alternate;
+}
 
-        .button:hover {
-            background: var(--accent);
-            color: black;
-            box-shadow: 0 0 20px var(--accent);
-        }
+@keyframes glow{
+from{text-shadow:0 0 10px var(--accent);}
+to{text-shadow:0 0 35px var(--accent2);}
+}
 
-        .section {
-            padding: 80px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
+.tagline{
+color:var(--muted);
+margin-top:15px;
+}
 
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
+.buttons{
+margin-top:30px;
+display:flex;
+gap:15px;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 0 25px rgba(0,255,225,0.2);
-        }
+.button{
+padding:12px 28px;
+border:1px solid var(--accent);
+border-radius:8px;
+text-decoration:none;
+color:var(--accent);
+transition:0.3s;
+}
 
-        .title {
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
+.button:hover{
+background:var(--accent);
+color:black;
+box-shadow:0 0 25px var(--accent);
+}
 
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
+/* SECTION */
+.section{
+padding:80px 20px;
+max-width:900px;
+margin:auto;
+position:relative;
+z-index:1;
+}
 
-        .skill {
-            padding: 6px 12px;
-            border: 1px solid var(--accent2);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            color: var(--accent2);
-        }
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:12px;
+padding:25px;
+margin-bottom:25px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
 
-        .network-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 30px rgba(0,255,225,0.2);
+}
 
-        .network-card {
-            display: block;
-            text-decoration: none;
-            background: rgba(10,15,25,0.6);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 18px;
-            transition: 0.3s;
-        }
+.title{
+font-family:'Orbitron';
+color:var(--accent);
+margin-bottom:10px;
+}
 
-        .network-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(0,255,225,0.25);
-            background: var(--card-hover);
-        }
+/* Network */
+.network-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
 
-        .network-name {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
+.network-card{
+background:rgba(10,15,25,0.6);
+border:1px solid var(--border);
+border-radius:10px;
+padding:18px;
+text-decoration:none;
+color:var(--text);
+transition:0.3s;
+}
 
-        .network-desc {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
+.network-card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 30px rgba(0,255,225,0.3);
+}
 
-        .network-id {
-            margin-top: 8px;
-            font-size: 0.8rem;
-            color: var(--accent2);
-        }
+.network-name i{
+margin-right:10px;
+color:var(--accent);
+}
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--muted);
-            font-size: 0.8rem;
-        }
+/* embeds */
+.embed{
+margin-top:15px;
+border-radius:10px;
+overflow:hidden;
+}
 
-    </style>
+footer{
+text-align:center;
+padding:30px;
+color:var(--muted);
+}
+
+</style>
 </head>
+
 <body>
+
+<div id="cursorGlow"></div>
+
+<div id="boot"></div>
 
 <div class="hero">
 
-    <div class="name">Six'0</div>
+<div class="name">Six'0</div>
 
-    <div class="tagline">
-        Systems Architect • Experimentalist • Signal Entity
-    </div>
+<div class="tagline">
+Systems Architect • Experimentalist • Builder of Unconventional Systems
+</div>
 
-    <div class="buttons">
-
-        <a href="#bio" class="button">
-            Access Bio
-        </a>
-
-        <a href="#network" class="button">
-            Access Network
-        </a>
-
-    </div>
+<div class="buttons">
+<a href="#bio" class="button">Access Bio</a>
+<a href="#network" class="button">Access Network</a>
+</div>
 
 </div>
 
 
-<!-- BIO SECTION -->
 <div id="bio" class="section">
 
-    <div class="card">
+<div class="card">
 
-        <div class="title">// identity</div>
+<div class="title">// identity</div>
 
-        <p>
-            Tech-driven builder focused on creating systems, experimenting with AI, and pushing hardware beyond intended limits.
-            <br><br>
-            Known for building portable servers, running custom AI locally, and engineering unconventional solutions.
-        </p>
+<p>
 
-    </div>
+I’ve always been more interested in how systems actually work than just using them.
 
+Most people see a finished interface. I see layers — processes underneath, signals moving between components, assumptions made by the designers. Breaking those assumptions and rebuilding things differently is where the interesting part starts.
 
-    <div class="card">
+A lot of my time goes into building environments where I have full control — running AI locally, modifying operating systems, building portable servers, and creating setups that don’t depend on external infrastructure.
 
-        <div class="title">// capabilities</div>
+I like things that are efficient, autonomous, and adaptable. Systems that can run quietly in the background and just work.
 
-        <div class="skills">
+Some projects exist purely because I wanted to know if they could.
 
-            <div class="skill">Arch Linux</div>
-            <div class="skill">System Engineering</div>
-            <div class="skill">AI Integration</div>
-            <div class="skill">Python</div>
-            <div class="skill">C / Low-Level</div>
-            <div class="skill">Linux Internals</div>
-            <div class="skill">Raspberry Pi</div>
-            <div class="skill">Automation</div>
-            <div class="skill">Reverse Engineering</div>
-            <div class="skill">Custom Tooling</div>
+</p>
 
-        </div>
+</div>
 
-    </div>
+<div class="card">
+
+<div class="title">// github activity</div>
+
+<div class="embed">
+
+<img src="https://github-readme-stats.vercel.app/api?username=Brancovic&show_icons=true&theme=dark&bg_color=00000000&title_color=00ffe1&text_color=e6f1ff&icon_color=00ffe1">
+
+</div>
 
 </div>
 
 
-<!-- NETWORK SECTION -->
+<div class="card">
+
+<div class="title">// spotify signal</div>
+
+<div class="embed">
+
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/user/akamentv"
+width="100%"
+height="152"
+frameBorder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="title">// instagram last signal</div>
+
+<div class="embed">
+
+<iframe
+src="https://www.instagram.com/brix_tin/embed"
+width="100%"
+height="480"
+frameborder="0">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+
 <div id="network" class="section">
 
-    <div class="card">
+<div class="card">
 
-        <div class="title">// network :: external nodes</div>
+<div class="title">// network :: external nodes</div>
 
-        <div class="network-grid">
+<div class="network-grid">
 
-            <a href="https://github.com/Brancovic" target="_blank" class="network-card">
-                <div class="network-name">GitHub</div>
-                <div class="network-desc">Code repositories and experimental systems</div>
-            </a>
+<a href="https://github.com/Brancovic" target="_blank" class="network-card">
+<div class="network-name"><i class="fab fa-github"></i> GitHub</div>
+</a>
 
-            <a href="https://steamcommunity.com/profiles/76561198118695173" target="_blank" class="network-card">
-                <div class="network-name">Steam</div>
-                <div class="network-desc">Simulation environments</div>
-            </a>
+<a href="https://steamcommunity.com/profiles/76561198118695173" target="_blank" class="network-card">
+<div class="network-name"><i class="fab fa-steam"></i> Steam</div>
+</a>
 
-            <a href="https://www.instagram.com/brix_tin/" target="_blank" class="network-card">
-                <div class="network-name">Instagram</div>
-                <div class="network-desc">Visual signal fragments</div>
-            </a>
+<a href="https://instagram.com/brix_tin" target="_blank" class="network-card">
+<div class="network-name"><i class="fab fa-instagram"></i> Instagram</div>
+</a>
 
-            <a href="https://open.spotify.com/user/akamentv" target="_blank" class="network-card">
-                <div class="network-name">Spotify</div>
-                <div class="network-desc">Audio layer</div>
-            </a>
+<a href="https://spotify.com/user/akamentv" target="_blank" class="network-card">
+<div class="network-name"><i class="fab fa-spotify"></i> Spotify</div>
+</a>
 
-            <a href="https://fetlife.com/Six0Four" target="_blank" class="network-card">
-                <div class="network-name">FetLife</div>
-                <div class="network-desc">Restricted identity partition</div>
-            </a>
+<a href="https://fetlife.com/Six0Four" target="_blank" class="network-card">
+<div class="network-name"><i class="fas fa-lock"></i> FetLife</div>
+</a>
 
-            <div class="network-card">
-                <div class="network-name">Discord</div>
-                <div class="network-desc">Direct communication channel</div>
-                <div class="network-id">brianxd2011</div>
-            </div>
-
-        </div>
-
-    </div>
+<div class="network-card">
+<div class="network-name"><i class="fab fa-discord"></i> Discord</div>
+brianxd2011
+</div>
 
 </div>
 
+</div>
+
+</div>
 
 <footer>
-    signal_id: Six'0 | status: online
+signal_id: Six'0 | system operational
 </footer>
+
+
+<script>
+
+/* mouse glow */
+document.addEventListener("mousemove",e=>{
+cursorGlow.style.left=e.clientX+"px";
+cursorGlow.style.top=e.clientY+"px";
+});
+
+/* boot sequence */
+
+const lines=[
+"Initializing signal...",
+"Loading identity matrix...",
+"Connecting nodes...",
+"Authenticating entity: Six'0",
+"System ready."
+];
+
+const boot=document.getElementById("boot");
+
+lines.forEach((line,i)=>{
+const div=document.createElement("div");
+div.className="bootline";
+div.style.animationDelay=(i*0.5)+"s";
+div.textContent=line;
+boot.appendChild(div);
+});
+
+setTimeout(()=>{
+boot.style.display="none";
+},3000);
+
+</script>
 
 </body>
 </html>
