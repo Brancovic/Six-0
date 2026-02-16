@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        /* ===== GLOBAL ===== */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;400;700&display=swap');
 
         :root {
@@ -25,6 +24,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -34,18 +34,17 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
         body::before {
             content: "";
             position: fixed;
             width: 200%;
             height: 200%;
             background: linear-gradient(45deg,
-                transparent,
-                rgba(0,255,225,0.03),
-                transparent,
-                rgba(122,92,255,0.03),
-                transparent);
+            transparent,
+            rgba(0,255,225,0.03),
+            transparent,
+            rgba(122,92,255,0.03),
+            transparent);
             animation: moveBg 20s linear infinite;
             z-index: -1;
         }
@@ -55,7 +54,6 @@
             100% { transform: translate(-25%, -25%); }
         }
 
-        /* ===== HERO ===== */
         .hero {
             height: 100vh;
             display: flex;
@@ -86,15 +84,21 @@
             font-size: 1.1rem;
         }
 
-        .button {
+        .buttons {
+            display: flex;
+            gap: 15px;
             margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button {
             padding: 12px 28px;
             border: 1px solid var(--accent);
             border-radius: 8px;
             text-decoration: none;
             color: var(--accent);
             transition: 0.3s;
-            position: relative;
         }
 
         .button:hover {
@@ -103,7 +107,6 @@
             box-shadow: 0 0 20px var(--accent);
         }
 
-        /* ===== SECTION ===== */
         .section {
             padding: 80px 20px;
             max-width: 900px;
@@ -147,7 +150,6 @@
             color: var(--accent2);
         }
 
-        /* ===== NETWORK GRID ===== */
         .network-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -163,21 +165,6 @@
             border-radius: 10px;
             padding: 18px;
             transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .network-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent, rgba(0,255,225,0.15), transparent);
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .network-card:hover::before {
-            opacity: 1;
         }
 
         .network-card:hover {
@@ -185,10 +172,6 @@
             border-color: var(--accent);
             box-shadow: 0 0 30px rgba(0,255,225,0.25);
             background: var(--card-hover);
-        }
-
-        .network-card.static:hover {
-            transform: translateY(-3px);
         }
 
         .network-name {
@@ -209,7 +192,6 @@
             color: var(--accent2);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 30px;
@@ -217,118 +199,123 @@
             font-size: 0.8rem;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .name {
-                font-size: 2rem;
-            }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div class="name">Six'0</div>
-        <div class="tagline">Systems Architect • Experimentalist • Signal Entity</div>
-        <a href="https://linktr.ee/Six'0" class="button" target="_blank">Access Network</a>
+<div class="hero">
+
+    <div class="name">Six'0</div>
+
+    <div class="tagline">
+        Systems Architect • Experimentalist • Signal Entity
     </div>
 
-    <div class="section">
+    <div class="buttons">
 
-        <div class="card">
-            <div class="title">// identity</div>
-            <p>
-                Tech‑driven builder focused on creating systems, experimenting with AI, and pushing hardware beyond intended limits.
-                Operating at the intersection of software engineering, system architecture, and experimental computing.
-                <br><br>
-                Known for building portable servers, running custom AI locally, and engineering unconventional solutions.
-            </p>
-        </div>
+        <a href="#bio" class="button">
+            Access Bio
+        </a>
 
-        <div class="card">
-            <div class="title">// capabilities</div>
-            <div class="skills">
-                <div class="skill">Arch Linux</div>
-                <div class="skill">System Engineering</div>
-                <div class="skill">AI Integration</div>
-                <div class="skill">Python</div>
-                <div class="skill">C / Low‑Level</div>
-                <div class="skill">Linux Internals</div>
-                <div class="skill">Raspberry Pi</div>
-                <div class="skill">Automation</div>
-                <div class="skill">Reverse Engineering</div>
-                <div class="skill">Custom Tooling</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="title">// current focus</div>
-            <p>
-                ▸ Building experimental AI systems with persistent memory<br>
-                ▸ Developing immersive simulation environments<br>
-                ▸ Creating efficient and autonomous computing setups<br>
-                ▸ Exploring system‑level optimization and hybrid architectures
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="title">// philosophy</div>
-            <p>
-                "Understand the system. Control the system. Become the system."
-                <br><br>
-                Every layer is an opportunity — from hardware signals to high‑level intelligence.
-            </p>
-        </div>
+        <a href="#network" class="button">
+            Access Network
+        </a>
 
     </div>
 
-    <div class="section">
+</div>
 
-        <div class="card">
-            <div class="title">// network :: external nodes</div>
-            <p style="margin-bottom:15px; color: var(--muted);">Verified external connections and public signal endpoints.</p>
-            <div class="network-grid">
 
-                <a href="https://github.com/Brancovic" target="_blank" class="network-card">
-                    <div class="network-name">GitHub</div>
-                    <div class="network-desc">Code repositories, system tools, and experimental builds</div>
-                </a>
+<!-- BIO SECTION -->
+<div id="bio" class="section">
 
-                <a href="https://steamcommunity.com/profiles/76561198118695173" target="_blank" class="network-card">
-                    <div class="network-name">Steam</div>
-                    <div class="network-desc">Simulation environments and digital worlds</div>
-                </a>
+    <div class="card">
 
-                <a href="https://www.instagram.com/brix_tin/" target="_blank" class="network-card">
-                    <div class="network-name">Instagram</div>
-                    <div class="network-desc">Visual signal fragments and captured states</div>
-                </a>
+        <div class="title">// identity</div>
 
-                <a href="https://open.spotify.com/user/akamentv?si=cb7ea8ef859f49da" target="_blank" class="network-card">
-                    <div class="network-name">Spotify</div>
-                    <div class="network-desc">Cognitive frequency stream and audio layer</div>
-                </a>
+        <p>
+            Tech-driven builder focused on creating systems, experimenting with AI, and pushing hardware beyond intended limits.
+            <br><br>
+            Known for building portable servers, running custom AI locally, and engineering unconventional solutions.
+        </p>
 
-                <a href="https://fetlife.com/Six0Four" target="_blank" class="network-card">
-                    <div class="network-name">FetLife</div>
-                    <div class="network-desc">Restricted-access identity partition</div>
-                </a>
+    </div>
 
-                <div class="network-card static">
-                    <div class="network-name">Discord</div>
-                    <div class="network-desc">Direct communication channel</div>
-                    <div class="network-id">ID: brianxd2011</div>
-                </div>
 
-            </div>
+    <div class="card">
+
+        <div class="title">// capabilities</div>
+
+        <div class="skills">
+
+            <div class="skill">Arch Linux</div>
+            <div class="skill">System Engineering</div>
+            <div class="skill">AI Integration</div>
+            <div class="skill">Python</div>
+            <div class="skill">C / Low-Level</div>
+            <div class="skill">Linux Internals</div>
+            <div class="skill">Raspberry Pi</div>
+            <div class="skill">Automation</div>
+            <div class="skill">Reverse Engineering</div>
+            <div class="skill">Custom Tooling</div>
+
         </div>
 
-    </div> </div>
+    </div>
 
-    <footer>
-        signal_id: Six'0 | status: online
-    </footer>
+</div>
+
+
+<!-- NETWORK SECTION -->
+<div id="network" class="section">
+
+    <div class="card">
+
+        <div class="title">// network :: external nodes</div>
+
+        <div class="network-grid">
+
+            <a href="https://github.com/Brancovic" target="_blank" class="network-card">
+                <div class="network-name">GitHub</div>
+                <div class="network-desc">Code repositories and experimental systems</div>
+            </a>
+
+            <a href="https://steamcommunity.com/profiles/76561198118695173" target="_blank" class="network-card">
+                <div class="network-name">Steam</div>
+                <div class="network-desc">Simulation environments</div>
+            </a>
+
+            <a href="https://www.instagram.com/brix_tin/" target="_blank" class="network-card">
+                <div class="network-name">Instagram</div>
+                <div class="network-desc">Visual signal fragments</div>
+            </a>
+
+            <a href="https://open.spotify.com/user/akamentv" target="_blank" class="network-card">
+                <div class="network-name">Spotify</div>
+                <div class="network-desc">Audio layer</div>
+            </a>
+
+            <a href="https://fetlife.com/Six0Four" target="_blank" class="network-card">
+                <div class="network-name">FetLife</div>
+                <div class="network-desc">Restricted identity partition</div>
+            </a>
+
+            <div class="network-card">
+                <div class="network-name">Discord</div>
+                <div class="network-desc">Direct communication channel</div>
+                <div class="network-id">brianxd2011</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    signal_id: Six'0 | status: online
+</footer>
 
 </body>
 </html>
