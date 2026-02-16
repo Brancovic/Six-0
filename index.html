@@ -1,286 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Six'0 — About</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#07070b;
-      --card:#0f1220cc;
-      --glass: rgba(255,255,255,0.04);
-      --accent:#00ffe1;
-      --accent2:#7a5cff;
-      --muted:#9aa6c0;
-      --text:#e7f2ff;
-      --card-border: rgba(122,92,255,0.12);
-      --glass-2: rgba(10,12,18,0.6);
-    }
+    <meta charset="UTF-8">
+    <title>Six'0 | About Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'JetBrains Mono', monospace;
-      background: radial-gradient(1200px 600px at 10% 10%, #0d0f17 0%, #050509 35%, #020203 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-      padding-bottom:60px;
-    }
+    <style>
+        /* ===== GLOBAL ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;400;700&display=swap');
 
-    /* subtle animated grid */
-    body::after{
-      content:'';
-      position:fixed; inset:0; z-index:-1;
-      background-image: linear-gradient(90deg, rgba(122,92,255,0.035) 1px, transparent 1px),
-                        linear-gradient(180deg, rgba(0,255,225,0.02) 1px, transparent 1px);
-      background-size: 60px 60px, 60px 60px;
-      opacity:0.9; transform:translateZ(0);
-      animation: drift 18s linear infinite;
-    }
-    @keyframes drift{0%{background-position:0 0,0 0}100%{background-position: -240px -120px,120px -240px}}
+        :root {
+            --card-hover: rgba(0,255,225,0.08);
+            --bg: #0a0a0f;
+            --bg2: #12121a;
+            --accent: #00ffe1;
+            --accent2: #7a5cff;
+            --text: #e6f1ff;
+            --muted: #8892b0;
+            --card: rgba(20,20,30,0.6);
+            --border: rgba(0,255,225,0.2);
+        }
 
-    .wrap{max-width:1100px;margin:40px auto;padding:28px}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .top{
-      display:flex;gap:20px;align-items:center;flex-wrap:wrap;
-    }
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: radial-gradient(circle at 20% 20%, #141427, #050508);
+            color: var(--text);
+            overflow-x: hidden;
+        }
 
-    .avatar{
-      width:118px;height:118px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent2));
-      display:flex;align-items:center;justify-content:center; font-family: 'Orbitron', sans-serif; font-size:30px;color:#03030a;box-shadow:0 8px 30px rgba(122,92,255,0.08);
-    }
+        /* Animated background */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                transparent,
+                rgba(0,255,225,0.03),
+                transparent,
+                rgba(122,92,255,0.03),
+                transparent);
+            animation: moveBg 20s linear infinite;
+            z-index: -1;
+        }
 
-    .meta{
-      flex:1;min-width:220px;
-    }
+        @keyframes moveBg {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-25%, -25%); }
+        }
 
-    .name{font-family:'Orbitron',sans-serif;font-size:48px;margin:6px 0;color:transparent;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text}
-    .tag{color:var(--muted);margin-bottom:8px}
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:var(--text);text-decoration:none;font-size:14px}
-    .btn.primary{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,255,225,0.06)}
+        .name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0,255,225,0.4);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
 
-    /* network grid */
-    .section{margin-top:28px}
-    .section .title{font-family:'Orbitron';color:var(--accent);margin-bottom:10px}
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--accent); }
+            to { text-shadow: 0 0 30px var(--accent2); }
+        }
 
-    .network-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+        .tagline {
+            margin-top: 15px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;padding:16px;border:1px solid var(--card-border);backdrop-filter:blur(6px);
-      transition:transform .22s ease, box-shadow .22s ease,border-color .22s;
-      position:relative;overflow:hidden;
-    }
-    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6);border-color:var(--accent)}
+        .button {
+            margin-top: 30px;
+            padding: 12px 28px;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--accent);
+            transition: 0.3s;
+            position: relative;
+        }
 
-    .service{display:flex;align-items:center;gap:12px}
-    .svc-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700}
-    .svc-title{font-family:'Orbitron';color:var(--accent);font-size:18px}
-    .svc-desc{color:var(--muted);font-size:13px;margin-top:6px}
+        .button:hover {
+            background: var(--accent);
+            color: black;
+            box-shadow: 0 0 20px var(--accent);
+        }
 
-    .embed-bits{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-    .badge{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
-    .badge.yes{border-color:rgba(0,255,225,0.12);color:var(--accent)}
-    .actions{display:flex;gap:8px;margin-top:12px}
-    .link-btn{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--text);font-size:13px}
-    .link-btn:hover{border-color:var(--accent);box-shadow:0 8px 18px rgba(0,255,225,0.06)}
+        /* ===== SECTION ===== */
+        .section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
 
-    /* special small preview */
-    .preview{
-      margin-top:12px;border-radius:8px;padding:10px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);
-      font-size:13px;color:var(--muted)
-    }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
 
-    /* Discord special */
-    .discord-id{font-family:'JetBrains Mono';background:linear-gradient(90deg,#101216,#0a0c10);padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);display:inline-block;color:var(--accent2);}
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(0,255,225,0.2);
+        }
 
-    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+        .title {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
 
-    @media(max-width:600px){.name{font-size:32px}.avatar{width:90px;height:90px;font-size:24px}}
-  </style>
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill {
+            padding: 6px 12px;
+            border: 1px solid var(--accent2);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--accent2);
+        }
+
+        /* ===== NETWORK GRID ===== */
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .network-card {
+            display: block;
+            text-decoration: none;
+            background: rgba(10,15,25,0.6);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .network-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent, rgba(0,255,225,0.15), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .network-card:hover::before {
+            opacity: 1;
+        }
+
+        .network-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0,255,225,0.25);
+            background: var(--card-hover);
+        }
+
+        .network-card.static:hover {
+            transform: translateY(-3px);
+        }
+
+        .network-name {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .network-desc {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .network-id {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--accent2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .name {
+                font-size: 2rem;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="top">
-      <div class="avatar">S'0</div>
-      <div class="meta">
+
+    <div class="hero">
         <div class="name">Six'0</div>
-        <div class="tag">Systems Architect • Experimentalist • Signal Entity</div>
-        <div class="hero-actions">
-          <a class="btn primary" href="#network">View Network</a>
-          <a class="btn" href="#contact">Contact</a>
+        <div class="tagline">Systems Architect • Experimentalist • Signal Entity</div>
+        <a href="https://linktr.ee/Six'0" class="button" target="_blank">Access Network</a>
+    </div>
+
+    <div class="section">
+
+        <div class="card">
+            <div class="title">// identity</div>
+            <p>
+                Tech‑driven builder focused on creating systems, experimenting with AI, and pushing hardware beyond intended limits.
+                Operating at the intersection of software engineering, system architecture, and experimental computing.
+                <br><br>
+                Known for building portable servers, running custom AI locally, and engineering unconventional solutions.
+            </p>
         </div>
-      </div>
-    </header>
 
-    <section class="section" id="network">
-      <div class="title">// network :: external nodes</div>
-      <p style="color:var(--muted);margin-bottom:14px">Direct endpoints you provided. Below each node is a quick note about what can be embedded or showcased from that source and a direct open / preview action.</p>
-
-      <div class="network-grid">
-
-        <!-- GitHub -->
-        <article class="card">
-          <div class="service">
-            <div class="svc-icon" style="background:linear-gradient(90deg,#0b1020,#122032);color:var(--accent)">GH</div>
-            <div>
-              <div class="svc-title">GitHub</div>
-              <div class="svc-desc">Public repositories, gists, commits, and packages. Ideal to embed: repo cards, README excerpts, and contribution graph.</div>
+        <div class="card">
+            <div class="title">// capabilities</div>
+            <div class="skills">
+                <div class="skill">Arch Linux</div>
+                <div class="skill">System Engineering</div>
+                <div class="skill">AI Integration</div>
+                <div class="skill">Python</div>
+                <div class="skill">C / Low‑Level</div>
+                <div class="skill">Linux Internals</div>
+                <div class="skill">Raspberry Pi</div>
+                <div class="skill">Automation</div>
+                <div class="skill">Reverse Engineering</div>
+                <div class="skill">Custom Tooling</div>
             </div>
-          </div>
+        </div>
 
-          <div class="embed-bits">
-            <span class="badge yes">embeddable: repo cards</span>
-            <span class="badge yes">embeddable: README preview</span>
-            <span class="badge">embeddable: commit feed (via API)</span>
-          </div>
+        <div class="card">
+            <div class="title">// current focus</div>
+            <p>
+                ▸ Building experimental AI systems with persistent memory<br>
+                ▸ Developing immersive simulation environments<br>
+                ▸ Creating efficient and autonomous computing setups<br>
+                ▸ Exploring system‑level optimization and hybrid architectures
+            </p>
+        </div>
 
-          <div class="actions">
-            <a class="link-btn" href="https://github.com/Brancovic" target="_blank">Open profile</a>
-            <a class="link-btn" href="#" onclick="alert('To embed: fetch repo list via GitHub API and display cards. I can provide that code.')">Embed code</a>
-          </div>
+        <div class="card">
+            <div class="title">// philosophy</div>
+            <p>
+                "Understand the system. Control the system. Become the system."
+                <br><br>
+                Every layer is an opportunity — from hardware signals to high‑level intelligence.
+            </p>
+        </div>
 
-          <div class="preview">Sample: Top repos, stars, languages. (Can be auto-fetched and shown as cards with live counts.)</div>
-        </article>
+    </div>
 
-        <!-- Steam -->
-        <article class="card">
-          <div class="service">
-            <div class="svc-icon" style="background:linear-gradient(90deg,#071014,#0d2a20);color:var(--accent2)">ST</div>
-            <div>
-              <div class="svc-title">Steam</div>
-              <div class="svc-desc">Profile link to SteamID: shows owned games, playtime, and badges. Embeds: profile summary, recent games carousel.</div>
+    <div class="section">
+
+        <div class="card">
+            <div class="title">// network :: external nodes</div>
+            <p style="margin-bottom:15px; color: var(--muted);">Verified external connections and public signal endpoints.</p>
+            <div class="network-grid">
+
+                <a href="https://github.com/Brancovic" target="_blank" class="network-card">
+                    <div class="network-name">GitHub</div>
+                    <div class="network-desc">Code repositories, system tools, and experimental builds</div>
+                </a>
+
+                <a href="https://steamcommunity.com/profiles/76561198118695173" target="_blank" class="network-card">
+                    <div class="network-name">Steam</div>
+                    <div class="network-desc">Simulation environments and digital worlds</div>
+                </a>
+
+                <a href="https://www.instagram.com/brix_tin/" target="_blank" class="network-card">
+                    <div class="network-name">Instagram</div>
+                    <div class="network-desc">Visual signal fragments and captured states</div>
+                </a>
+
+                <a href="https://open.spotify.com/user/akamentv?si=cb7ea8ef859f49da" target="_blank" class="network-card">
+                    <div class="network-name">Spotify</div>
+                    <div class="network-desc">Cognitive frequency stream and audio layer</div>
+                </a>
+
+                <a href="https://fetlife.com/Six0Four" target="_blank" class="network-card">
+                    <div class="network-name">FetLife</div>
+                    <div class="network-desc">Restricted-access identity partition</div>
+                </a>
+
+                <div class="network-card static">
+                    <div class="network-name">Discord</div>
+                    <div class="network-desc">Direct communication channel</div>
+                    <div class="network-id">ID: brianxd2011</div>
+                </div>
+
             </div>
-          </div>
+        </div>
 
-          <div class="embed-bits">
-            <span class="badge yes">embeddable: profile summary</span>
-            <span class="badge">embeddable: owned games (via Web API)</span>
-            <span class="badge">embeddable: recent activity</span>
-          </div>
+    </div> </div>
 
-          <div class="actions">
-            <a class="link-btn" href="https://steamcommunity.com/profiles/76561198118695173" target="_blank">Open Steam</a>
-            <a class="link-btn" href="#" onclick="alert('To embed Steam data you would need a Steam Web API key; I can show example fetch code.')">Embed code</a>
-          </div>
+    <footer>
+        signal_id: Six'0 | status: online
+    </footer>
 
-          <div class="preview">Sample: profile name, avatar, last played game, total hours on top game.</div>
-        </article>
-
-        <!-- Instagram -->
-        <article class="card">
-          <div class="service">
-            <div class="svc-icon" style="background:linear-gradient(90deg,#2a1b40,#5b2a8a);">IG</div>
-            <div>
-              <div class="svc-title">Instagram</div>
-              <div class="svc-desc">Visual feed: photos and short reels. Embeds: single post embeds, grid preview, or latest 3 thumbnails.</div>
-            </div>
-          </div>
-
-          <div class="embed-bits">
-            <span class="badge yes">embeddable: single post</span>
-            <span class="badge yes">embeddable: grid preview (via API/third-party)</span>
-            <span class="badge">embeddable: stories (limited)</span>
-          </div>
-
-          <div class="actions">
-            <a class="link-btn" href="https://www.instagram.com/brix_tin/" target="_blank">Open IG</a>
-            <a class="link-btn" href="#" onclick="alert('I can provide JS that fetches recent posts and shows thumbnails (requires a simple server proxy for the Instagram Basic Display API).')">Embed code</a>
-          </div>
-
-          <div class="preview">Sample: 3-image inline preview (thumbnails). Click a thumbnail to open the full post.</div>
-        </article>
-
-        <!-- Spotify -->
-        <article class="card">
-          <div class="service">
-            <div class="svc-icon" style="background:linear-gradient(90deg,#051020,#0a2a3a);">SP</div>
-            <div>
-              <div class="svc-title">Spotify</div>
-              <div class="svc-desc">User profile / playlists: embeddable widgets for playlists and tracks. Live 'currently playing' requires OAuth.</div>
-            </div>
-          </div>
-
-          <div class="embed-bits">
-            <span class="badge yes">embeddable: playlist & track widgets</span>
-            <span class="badge">embeddable: currently playing (OAuth)</span>
-          </div>
-
-          <div class="actions">
-            <a class="link-btn" href="https://open.spotify.com/user/akamentv?si=cb7ea8ef859f49da" target="_blank">Open Spotify</a>
-            <a class="link-btn" href="#" onclick="alert('I can embed a playlist or track widget if you provide a playlist/track link.')">Embed widget</a>
-          </div>
-
-          <div class="preview">Sample: Playlist widget area. (Provide a playlist/track link to generate embed iframe.)</div>
-        </article>
-
-        <!-- FetLife -->
-        <article class="card">
-          <div class="service">
-            <div class="svc-icon" style="background:linear-gradient(90deg,#1b0b18,#3b0b2a);">FL</div>
-            <div>
-              <div class="svc-title">FetLife</div>
-              <div class="svc-desc">Profile with restricted content. Embedding is limited due to access controls; best displayed as a link or screenshot with consent.</div>
-            </div>
-          </div>
-
-          <div class="embed-bits">
-            <span class="badge">embeddable: public profile link</span>
-            <span class="badge">embeddable: images (subject to access)</span>
-          </div>
-
-          <div class="actions">
-            <a class="link-btn" href="https://fetlife.com/Six0Four" target="_blank">Open FetLife</a>
-            <a class="link-btn" href="#" onclick="alert('Because FetLife has access controls, embedding may require manual screenshots or explicit consent. I can show styling for that.')">Embed guidance</a>
-          </div>
-
-          <div class="preview">Sample: Link card with privacy note — show only public data unless you authorize more.</div>
-        </article>
-
-        <!-- Discord (username only) -->
-        <article class="card">
-          <div class="service">
-            <div class="svc-icon" style="background:linear-gradient(90deg,#0b1724,#0b2540);">DC</div>
-            <div>
-              <div class="svc-title">Discord</div>
-              <div class="svc-desc">Direct chat handle. Displayed as username since Discord contact via web requires invite links or bot integration for presence/status.</div>
-            </div>
-          </div>
-
-          <div class="embed-bits">
-            <span class="badge">embeddable: invite links</span>
-            <span class="badge">embeddable: bot-status (requires token)</span>
-          </div>
-
-          <div style="margin-top:12px">Username: <span class="discord-id">brianxd2011</span></div>
-          <div class="actions" style="margin-top:10px">
-            <a class="link-btn" href="#contact">How to connect</a>
-          </div>
-
-          <div class="preview">Tip: To add on desktop/mobile, open Discord → Friends → Add Friend → enter <strong>brianxd2011</strong> and send request.</div>
-        </article>
-
-      </div>
-
-    </section>
-
-    <section class="section" id="contact">
-      <div class="title">// contact & next steps</div>
-      <p style="color:var(--muted)">If you want me to embed live previews (for example: GitHub repo cards, Instagram thumbnails, Spotify playlist widgets, or Steam recent games) I can generate the exact HTML/JS snippets. For some services (Instagram, Steam player lists, Spotify 'currently playing') a small server-side token or API key is required — I will mark those cases and provide guidance.</p>
-
-      <div style="margin-top:12px">
-        <a class="btn" href="mailto:you@example.com">Send me data</a>
-        <a class="btn" style="margin-left:8px" href="#" onclick="alert('If you send the exact playlist/track or repo names I will produce embed code and live previews.')">Provide links</a>
-      </div>
-    </section>
-
-    <footer>Six'0 • Systems & Signals • handcrafted UI</footer>
-  </div>
 </body>
 </html>
